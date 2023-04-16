@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Index{% endblock %}
+
+
+
+
+
+{% block content %}
+
+<style>
+  /* Basic styling */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    padding: 0;
+    margin: 0;
+  }
+  h1 {
+    text-align: center;
+    margin-top: auto;
+    font-size: 36px;
+    color: #333;
+  }
+  form {
+    width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
+  input[type="email"],
+  input[type="password"],
+  input[type="text"] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+    text-decoration: none;
+  }
+  /* Additional styling for sign-up form */
+  #sign-up-form {
+    display: none;
+  }
+  #sign-up-link {
+    margin-top: 40px;
+  }
+  #button {
+  display: block;
+  margin: 0 auto;
+  background-image: url('your-image-url-here');
+  background-size: cover;
+  width: 200px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 5px;
+  
+}
+</style>
+
+
+
+
+
+    {%  for message in messages %}
+    <div class="alert alert-{{message.tags}} alert-dismissible fade show" roles="alert">
+      <strong>Message</strong>{{message}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="close"><span aria-hidden="true">&times;
+      </span>
+    </button>
+    </div>
+    {% endfor %}
+    <h1>welcome to our website </h1>
+    {% if user.is_authenticated %}
+    <h3>Hello {{ fname}}</h3>
+    <h4>you are successfully logged in.</h4>
+    <button type="submit"  id="button"><a href="/singout">SignOut</a></button>
+    {% else %}
+    <button type="submit"  id="button"><a href="/singup">SignUp</a></button>
+    <button type="submit"  id="button"><a href="/singin">SignIn</a></button>
+    {% endif %}
+    
+
+    {% endblock %}
